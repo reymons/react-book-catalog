@@ -1,0 +1,19 @@
+// --------------- { Center block } -------------- //
+@mixin center-block($width){width:$width;margin: 0 auto;}
+// --------------- { Create button } ------------- //
+@mixin create-btn($fs,$padding,$bg-color,$color,$border,$border-rad){
+  font-size:$fs;padding:$padding;background-color:$bg-color;
+  color:$color;border:$border;border-radius:$border-rad;
+}
+// --------------- { Create background } ------------ //
+@mixin create-background($bg, $bg-size){background:$bg;background-size:$bg-size;}
+// --------------- { Create flex } ------------------ //
+@mixin create-flexbox($jstfy-con:flex-start,$align-items:flex-start,$direction:row,){
+  display:flex;justify-content:$jstfy-con;
+  align-items:$align-items;flex-direction:$direction;
+}
+// --------------- { Initialize "pseudo" element } ----------- //
+@mixin pseudo($loc,$con:"",$pos:absolute,$t:0,$l:0,$b:0,$r:0){
+  position:relative;
+  &::#{$loc}{content:$con;position:$pos;top:$t;left:$l;bottom:$b;right:$r}
+}
