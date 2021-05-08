@@ -1,0 +1,113 @@
+@import "./../assets/scss/mixins.scss";
+@import "./../assets/scss/constans.scss";
+
+.header {
+  color: #fff;
+  height: 50px;
+  background-color: #001529;
+  font-size: 1rem;
+
+  &__nav {
+    height: 100%;
+    margin: 0 50px;
+    display: flex;
+  }
+
+  &__item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &:last-of-type {
+      margin-left: auto;
+    }
+  }
+
+  &__link:last-of-type {
+    margin-left: 30px;
+  }
+
+  &__text {
+    color: #fff;
+    cursor: pointer;
+    transition: color $basic-speed ease-in;
+
+    &:hover {
+      color: rgb(247, 138, 138);
+      transition: color $basic-speed ease-in;
+    }
+  }
+
+  &__auth:last-of-type {
+    margin-left: 30px;
+  }
+
+  &__menu-icon {
+    height: 38%;
+    align-self: center;
+    width: 40px;
+    display: none;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__menu-line {
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: inherit;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  @media (max-width: 620px) {
+    &__nav {
+      position: relative;
+    }
+    &__item:nth-child(2) {
+      align-items: flex-start;
+      position: absolute;
+      flex-direction: column;
+      height: auto;
+      padding: 15px 15px;
+      left: 0;
+      bottom: -85px;
+      background-color: #1c1c1c;
+      opacity: 0;
+      visibility: hidden;
+    }
+    &__item:nth-child(3) {
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+    }
+    &__item--active:nth-child(2) {
+      opacity: 1;
+      visibility: visible;
+    }
+    &__link:last-of-type {
+      margin: 0;
+      margin-top: 20px;
+    }
+    &__menu-icon {
+      display: flex;
+    }
+  }
+}
