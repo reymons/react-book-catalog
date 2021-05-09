@@ -1,15 +1,33 @@
-@import "./../node_modules/normalize.css/normalize.css";
-
 #root {
   min-height: 100vh;
+  position: relative;
 }
 
 * {
   padding: 0;
   margin: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+  font-weight: lighter;
 }
 
 ul, ol, li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+:focus {
+  outline: none;
+}
+
+input {
+  border: 1px solid rgb(121, 121, 121);
+}
+
+input:focus {
+  box-shadow: 0 0 2px 2px rgba(106, 150, 185, .3);
 }

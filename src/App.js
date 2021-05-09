@@ -1,24 +1,46 @@
-import './App.scss';
-import { Layout, Menu } from "antd";
+import './styles/App.scss';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
+import { auth } from "./firebase";
+import { useEffect, useState } from 'react';
+import { AuthContext } from "./contexts";
 import Books from './components/Books';
+import BookProvider from './contexts/BookContext';
+import Manage from './components/Manage';
 
 const App = () => {
-  const { Header, Footer, Content } = Layout;
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      setLoading(false);
+      setUser(user);
+    })
+  }, []);
+
+  const value = {
+    user
+  }
 
   return (
-    <Layout style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-          <Menu.Item key="1" >Главная</Menu.Item>
-          <Menu.Item key="2">Управление книгами</Menu.Item>
-        </Menu>
-      </Header>
-      <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64, backgroundColor: "#fff" }}>
-        <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-          <Books/>
-        </div>
-      </Content>
-    </Layout>
+    <Router>
+      {
+        !loading &&
+        <AuthContext.Provider value={value}>         
+          <Header />
+          <div id="page">
+            <Switch>
+              
+              <BookProvider>
+                <Route exact path={process.env.PUBLIC_URL + "/"} component={Books} />
+                <Route path="/manage" component={Manage} />
+              </BookProvider>
+            </Switch>
+          </div>
+        </AuthContext.Provider>
+      }
+    </Router>
   )
 }
 

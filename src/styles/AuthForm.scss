@@ -1,0 +1,111 @@
+@import "./../assets/scss/mixins.scss";
+@import "./../assets/scss/constans.scss";
+
+.authForm {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(27, 27, 27, 0.763);
+  z-index: 9999;
+
+  &__wrapper {
+    $width: 400px;
+    width: 400px;
+    background-color: #fff;
+    padding: 2em 1.15em;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  &__close-ico-wrapper {
+    text-align: right;
+    margin-bottom: 1em;
+  }
+
+  &__close-ico {
+    cursor: pointer;
+    font-size: 1.15rem;
+    color: rgb(121, 121, 121);
+    transition: color $basic-speed ease-in;    
+
+    &:hover {
+      color: rgb(209, 45, 45);
+      transition: color $basic-speed ease-in;
+    }
+  }
+
+  &__header {
+    display: flex;
+    padding-bottom: 1em;
+  }
+
+  &__title-btn-wrapper {
+    flex-basis: 50%;
+    text-align: center;
+
+    &:first-of-type {
+      border-right: 1px solid black;
+    }
+  }
+
+  &__title-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:disabled:hover {
+      text-decoration: none;
+      cursor: default;
+    }
+  }
+
+  @media (max-width: 458px) {
+    &__wrapper {
+      width: 85%;
+    }
+  }
+}
+
+.form {
+  &__input-wrapper {
+    margin-bottom: 1em;
+  }
+
+  &__input {
+    width: 100%;
+    padding: .5em;
+    border-radius: 5px;
+  }
+
+  &__btn-wrapper {
+    text-align: center;
+  }
+
+  &__btn {
+    padding: .5em 1.25em;
+    background-color: rgba(106, 150, 185, .85);
+    border: 1px solid rgb(121, 121, 121);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: rgba(154, 168, 180, 0.85);
+      cursor: default;
+    }
+  }
+
+  &__error {
+    text-align: center;
+    margin-top: 1em;
+    color:rgb(209, 45, 45);
+  }
+}

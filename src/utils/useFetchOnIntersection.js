@@ -6,10 +6,7 @@ const useFetchOnIntersection = (fetchFunc) => {
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(([target]) => {
-      if (target.isIntersecting) {
-        fetchFunc();
-        console.log("intersected")
-      };
+      if (target.isIntersecting) fetchFunc();
     }, {});
 
     const observableNode = observableNodeRef.current;

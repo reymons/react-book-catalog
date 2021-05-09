@@ -1,11 +1,18 @@
 @import "./../assets/scss/mixins.scss";
 @import "./../assets/scss/constans.scss";
 
+#page {
+  padding-top: 50px;
+}
+
 .header {
   color: #fff;
   height: 50px;
   background-color: #001529;
   font-size: 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
 
   &__nav {
     height: 100%;
@@ -88,10 +95,11 @@
       height: auto;
       padding: 15px 15px;
       left: 0;
-      bottom: -85px;
+      bottom: -5.3125em;
       background-color: #1c1c1c;
       opacity: 0;
       visibility: hidden;
+      z-index: inherit;
     }
     &__item:nth-child(3) {
       flex-direction: column;
@@ -109,5 +117,24 @@
     &__menu-icon {
       display: flex;
     }
+  }
+}
+
+.library {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  &__book {
+    padding: 1em;
+    width: 21.875em;
+  }
+}
+
+@media (max-width: 395px) {
+  :root {
+    font-size: 14px;
   }
 }
